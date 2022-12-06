@@ -31,16 +31,11 @@ def process(line):
     # print(state)
 
 with open("input.txt") as file:
-    count=0
-    stage=0
     for line in file:
-        if stage==0 and not "1" in line:
+        if line.startswith('['):
             parse_line(line)
-        elif stage==0 and "1" in line:
-            stage=1
         elif line.startswith("move"):
             process(line)
-        count+=1
 
 answer=dict(sorted(state.items()))
 for k,v in answer.items():
