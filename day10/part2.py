@@ -31,6 +31,4 @@ with open("input.txt") as file:
 for i in range(len(crt)):
     if i%40==0:
         print()
-
     print(crt[i],end='')
-
