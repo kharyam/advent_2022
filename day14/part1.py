@@ -77,18 +77,17 @@ def print_map():
 def simulate():
 
     unit = 0
-    start = {'y': source['y'], 'x': source['x']-min_x}
     units_left = True
     while units_left:
-        moves_left = True
+        moves_remaining = True
         unit += 1
-        c = start.copy()
-        while moves_left:
+        c = source.copy()
+        while moves_remaining:
             x = c['x']
             y = c['y']
-            if y==max_y:
-                units_left=False
-                moves_left=False
+            if y == max_y:
+                units_left = False
+                moves_remaining = False
             elif map[y+1][x] == '.':
                 map[y+1][x] = 'o'
                 map[y][x] = '.'
@@ -104,11 +103,13 @@ def simulate():
                 c['y'] = y+1
                 c['x'] = x+1
             else:
-                moves_left = False
+                moves_remaining = False
 
             # print_map()
     print(unit-1)
 
+
 load_file("input.txt")
 build_map()
+source['x'] -= min_x
 simulate()
